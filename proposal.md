@@ -55,8 +55,15 @@
     "After the conditions are set, the world map on the right will work as a density map. All the answers for the questions are converted to a score (-1, 0, 1), and the final average score will shown on the map in terms of colors. A deeper color on the map represents a high score, and, briefly speaking, a more positive attitude towards the question. \n",
     "The main challenge for our project is how to make the map interactive. We are hopping, by clicking certain area on the map, we can make a bar plot based on the data for that specific country on the bottom left. The bar plot will contain the data distribution of the main question. If there is a sub question selected (the user want to do parallel compare), there will be a grouped bar plot. However, the height of the bar can only represent the score. As mentioned before, the score is calculated based on the answers: yes, maybe, and no. The barplot can be interactive, and if we click certain bar, a pie plot will shown on the right and represents the proportion of different answers. \n",
     "\n",
-    "<img src=\"blueprint.png\">"
+    "<img src =\"blueprint.png\">"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
   },
   {
    "cell_type": "code",
