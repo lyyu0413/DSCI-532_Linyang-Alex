@@ -2,7 +2,6 @@ library(shiny)
 library(tidyverse)
 mental_data <- read.csv("../data/cleaned_data.csv", stringsAsFactors = FALSE) %>% 
   select("Age":"phys_health_interview_score")
-View(mental_data)
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   titlePanel("Aspects of Mental Health in Tech"),
@@ -10,9 +9,11 @@ ui <- fluidPage(
     sidebarPanel(
       sliderInput("ageInput", "Select your age range of interest",
                   min = 5, max = 100, value = c(18, 40)),
-      radioButtons("anonInput", "Perceived Mental Health Anonymity",
-                   choices = c("Yes", "No", "Don't know"))
-      
+      #### NOTE: How can we include an 'All' setting when we don't have it in our column for radioButtons?
+      radioButtons("anonInput", "Is your anonymity protected at work if you seek help?",
+                   choices = c("Yes", "No", "Don't know"),inline=T),
+      radioButtons("famInput", "Do you have a family history of mental illness?", 
+                   choices = c("Yes", "No"), inline=T)
     ),
     mainPanel(
       plotOutput("demo_hist"),
@@ -34,13 +35,14 @@ server <- function(input, output) {
     mental_data %>% 
       filter(Age > input$ageInput[1],
              Age < input$ageInput[2],
-             anonymity == input$anonInput)
+             anonymity == input$anonInput,
+             family_history == input$famInput)
   )
   
   output$demo_hist <- renderPlot(
     mh_filtered() %>% 
-      ggplot(aes(continent)) + 
-      geom_bar(bins=20)
+      ggplot(aes(Age)) + 
+      geom_histogram(bins=20) + xlab("Age")
   )
   
   output$demo_table <- renderDataTable(
