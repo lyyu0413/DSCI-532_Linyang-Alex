@@ -20,6 +20,7 @@ output_file_path <- args[2]
 
 data <- read.csv(input_file_path)
 
+data[is.na(data)] <- 0
 
 data_cleaned <- data %>% 
   filter(tech_company == 'Yes') %>%
@@ -71,6 +72,15 @@ data_cleaned <- data_cleaned %>%
 cc <- gapminder %>% select(country, continent) %>% unique()
 cc <- cc %>% mutate(Country = country) 
 data_cleaned <- left_join(data_cleaned, cc, by='Country')
+
+data_cleaned_select <- data_cleaned %>% 
+  group_by(continent, Country) %>% 
+  unique() %>%
+  summarise(sum_c = n()) %>%
+  filter(sum_c > 10)
+
+data_cleaned <- data_cleaned %>% filter(Country %in% data_cleaned_select$Country)
+
 
 data_cleaned <- data_cleaned %>%
   select(Age, Gender, Country, continent, self_employed, self_employed_score, benefits, benefits_score, remote_work, remote_work_score, leave, leave_score, wellness_program, wellness_program_score, work_freedom, family_history, family_history_score, anonymity, anonymity_score, treatment, treatment_score, work_interfere, work_interfere_score, care_options, care_options_score, seek_help, seek_help_score, mental_health_interview, mental_health_interview_score, phys_health_interview, phys_health_interview_score)
