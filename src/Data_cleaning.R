@@ -8,6 +8,8 @@
 # Rscript src/Data_cleaning.R data/MH_survey.csv data/cleaned_data.csv
 
 library(tidyverse)
+library(gapminder)
+
 
 
 suppressPackageStartupMessages(library(tidyverse))
@@ -20,7 +22,7 @@ output_file_path <- args[2]
 
 data <- read.csv(input_file_path)
 
-data[is.na(data)] <- 0
+data$self_employed[is.na(data$self_employed)] <- 0
 
 data_cleaned <- data %>% 
   filter(tech_company == 'Yes') %>%
@@ -35,7 +37,7 @@ data_cleaned <- data %>%
                               ifelse(leave == 'No', -1,0))) %>%
   mutate(wellness_program_score = ifelse(wellness_program == 'Yes', 1,
                                          ifelse(wellness_program =='No', -1,0))) %>%
-  mutate(work_freedom = self_employed_score + wellness_program_score + benefits_score + remote_work_score + leave_score) %>%
+  mutate(work_freedom = self_employed_score + wellness_program_score + benefits_score + remote_work_score + leave_score, is.na = TRUE) %>%
   
   mutate(family_history_score = ifelse(family_history == 'Yes'|family_history == 'yes', 1,
                                        ifelse(self_employed == 'No'|self_employed == 'no', -1, 0))) %>%
@@ -50,7 +52,7 @@ data_cleaned$Gender <- str_replace(data_cleaned$Gender, pattern = '^F', replacem
 
 data_cleaned <- data_cleaned %>%
   mutate(Gender = ifelse(Gender == 'Male'|Gender == 'M', 'M',
-                         ifelse(Gender =='Female'|Gender = 'F', 'Others')))
+                         ifelse(Gender =='Female'|Gender == 'F', 'F', 'Others')))
 
 data_cleaned <- data_cleaned %>%
   mutate(treatment_score = ifelse(treatment == 'Yes', 1,
@@ -77,7 +79,7 @@ data_cleaned_select <- data_cleaned %>%
   group_by(continent, Country) %>% 
   unique() %>%
   summarise(sum_c = n()) %>%
-  filter(sum_c > 10)
+  filter(sum_c > 5)
 
 data_cleaned <- data_cleaned %>% filter(Country %in% data_cleaned_select$Country)
 
