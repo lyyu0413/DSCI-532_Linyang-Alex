@@ -37,7 +37,7 @@ data_cleaned <- data %>%
                               ifelse(leave == 'No', -1,0))) %>%
   mutate(wellness_program_score = ifelse(wellness_program == 'Yes', 1,
                                          ifelse(wellness_program =='No', -1,0))) %>%
-  mutate(work_freedom = self_employed_score + wellness_program_score + benefits_score + remote_work_score + leave_score, is.na = TRUE) %>%
+  mutate(work_freedom = self_employed_score + wellness_program_score + benefits_score + remote_work_score + leave_score, is.na=TRUE) %>%
   
   mutate(family_history_score = ifelse(family_history == 'Yes'|family_history == 'yes', 1,
                                        ifelse(self_employed == 'No'|self_employed == 'no', -1, 0))) %>%
@@ -56,32 +56,28 @@ data_cleaned <- data_cleaned %>%
 
 data_cleaned <- data_cleaned %>%
   mutate(treatment_score = ifelse(treatment == 'Yes', 1,
-                                  ifelse(treatment == 'No', -1, 0))) %>%
+                                  ifelse(treatment == 'No', 0, 0.5))) %>%
   mutate(work_interfere_score = ifelse(work_interfere == 'Never', 0,
                                        ifelse(work_interfere == 'Rarely', 1,
                                               ifelse(work_interfere == 'Sometimes', 2,
                                                      ifelse(work_interfere == 'often', 3, 0))))) %>%
   mutate(care_options_score = ifelse(care_options == 'Yes', 1,
-                                     ifelse(care_options == 'No', -1,0))) %>%
+                                     ifelse(care_options == 'No', 0,0.5))) %>%
   mutate(seek_help_score = ifelse(seek_help == 'Yes', 1,
-                                  ifelse(seek_help == 'No', -1, 0))) %>%
+                                  ifelse(seek_help == 'No', 0, 0.5))) %>%
   mutate(mental_health_interview_score = ifelse(mental_health_interview == 'Yes', 1,
-                                                ifelse(mental_health_interview == 'No', -1, 0))) %>%
+                                                ifelse(mental_health_interview == 'No', 0, 0.5))) %>%
   mutate(phys_health_interview_score = ifelse(phys_health_interview == 'Yes', 1,
-                                              ifelse(phys_health_interview == 'No', -1,0)))
+                                              ifelse(phys_health_interview == 'No', 0,0.5)))
+
 
 
 cc <- gapminder %>% select(country, continent) %>% unique()
 cc <- cc %>% mutate(Country = country) 
 data_cleaned <- left_join(data_cleaned, cc, by='Country')
 
-data_cleaned_select <- data_cleaned %>% 
-  group_by(continent, Country) %>% 
-  unique() %>%
-  summarise(sum_c = n()) %>%
-  filter(sum_c > 5)
-
-data_cleaned <- data_cleaned %>% filter(Country %in% data_cleaned_select$Country)
+data_cleaned <- data_cleaned %>%
+  filter(Country %in% c("United States", "Canada", "United Kingdom"))
 
 
 data_cleaned <- data_cleaned %>%
