@@ -1,4 +1,4 @@
-**DSCI-532: Milestone 1**
+**DSCI-532: Milestone 2**
 
 **Write-up**
 
