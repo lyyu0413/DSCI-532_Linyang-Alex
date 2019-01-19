@@ -19,7 +19,7 @@ states$state <- state.abb[match(x,state.name)]
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  titlePanel("Mental Heath Care Condition for Tech Companies"),
+  titlePanel("Mental Health Conditions  Tech Companies"),
   sidebarLayout(
     sidebarPanel(
       selectInput("Question_main", "Please select one question that you are interested in and see other people's response towards it:", c("Do you know the options for mental health care your employer provides?" = 'care_options_score',
@@ -37,14 +37,14 @@ ui <- fluidPage(
       sliderInput("freedomInput", "Working Flexibility", min = 0, max = 5, value = c(0, 5)),
       #sliderInput("freedomInput", "How much freedom do you feel you have to manage a mental illness in your workplace?",min=-5,max=5,value=c(-5,5)),
       #### NOTE: How can we include an 'All' setting when we don't have it in our column for radioButtons?
-      radioButtons("famInput", "Family History", choices = c("Responsors with family history of mental illness" ='Yes',
-                                                                                    "Responsor without family history of mental illness" = 'No', 
+      radioButtons("famInput", "Family History", choices = c("Respondents with family history of mental illness" ='Yes',
+                                                                                    "Respondents without family history of mental illness" = 'No', 
                                                                                     "All condition included" = "All condition included"),
                    selected = "All condition included"),
       
       
-      radioButtons("treatmentInput", "Treatment for Mental Health", choices = c("Responsors want to have mental health treatment" = 'Yes',
-                                                                                                   "Responsors never think about having mental health treatment" = 'No',
+      radioButtons("treatmentInput", "Treatment for Mental Health", choices = c("Respondents have received mental health treatment" = 'Yes',
+                                                                                                   "Respondents have never received mental health treatment" = 'No',
                                                                                                    "All condition included" = 'All condition included'),
                    selected = "All condition included")
      
@@ -130,9 +130,9 @@ server <- function(input, output) {
       geom_text(data = data.state,aes(x, y, label = abb), color = 'white')+
       coord_fixed() +
       scale_fill_gradientn(colours=c('cornflowerblue','hotpink'),na.value = "transparent",
-                           breaks=c(0.075,0.925),labels=c("Negtive","Positive"),
+                           breaks=c(0.075,0.925),labels=c("Negative","Positive"),
                            limits=c(0,1)) +
-      labs(title="Responsors from Different States, and Their Responses") + 
+      labs(title="Positive & Negative Responses by U.S. States") + 
       theme(axis.line = element_blank(),
             axis.text = element_blank(),
             axis.title = element_blank(),
@@ -175,8 +175,8 @@ server <- function(input, output) {
                     label = paste0(norm_count, '%')),    # prettify
                 position = position_dodge(width = 0.8), 
                 size = 4)+
-      labs(title = "Responsors from Different Countries, and Their Responses",
-           y = "Proportion for different responses") +
+      labs(title = "Individual Responses by Country",
+           y = "Proportion of different responses") +
       theme_bw()+
       theme(axis.title.x = element_blank(),
             plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
