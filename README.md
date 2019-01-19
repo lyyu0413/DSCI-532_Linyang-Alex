@@ -10,5 +10,5 @@ The whole shiny app is in the [MHealth-Visualization](MHealth-Visualization/) fo
 
 ### 2. Deploy your Shiny app to shinyapps.io.
 
-Here is a linke to our Shiny app on shinyapps.io: [MHealth-Visualization](https://linyang-yu.shinyapps.io/MHealth-Visualization/)
+Here is a link to our Shiny app on shinyapps.io: [MHealth-Visualization](https://linyang-yu.shinyapps.io/MHealth-Visualization/)
 
