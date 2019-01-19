@@ -1,1 +1,12 @@
 # DSCI-532_Linyang-Alex
+
+## Overview
+
+According to the World Health Organization (WHO), 1 in 4 individuals across the globe will meet diagnostic criteria for a mental disorder at some point in their lives. With more than 450 million currently suffering from a neurological disorder, mental illness is one of the leading causes of human suffering and represents an enormous economic and social burden on societies, including the companies that operate within them.
+There is growing recognition that company culture (ex. office design, social structure, benefits package, schedule flexibility, etc.) is critical for employee health, creativity, and overall productivity. As such, effective companies recognize it is in their best interests to improve practices for assessing illness and managing afflicted employees within the workplace. Correctly handling mental illness within company settings is further complicated by the harmful attitudes and stigma associated with mental disorders. These social aspects can erode trust within a company, particularly between managers and the employees they supervise. They also may influence employee behaviors in so far as whether they feel comfortable to discuss an illness with co-workers and/or seek help to address it.
+To tackle this issue, we propose a visualization app for decision-makers within companies who have significant control over conditions we know are important for fostering mental health and resiliency. The app itself will display various predictors of mental health/illness, and factors associated with health awareness/health-seeking behaviors in tech-based companies. We hope this tool will be utilized by managers in these companies to examine their own company and consider both employee attitudes and the conditions in which they work. The information our app provides may help managers visualize how to re-shape company culture, identify early employee risk for illness, elevate employee awareness about benefits and generally enhance communication and openness about mental health within the workplace. The app could improve productivity outcomes by focusing on employee well-being and satisfaction as well as reduce the number of days lost to medical illness. It will also help managers and companies identify general trends that predict both flourishing and illness, and how illness can be handled more effectively in the workplace.
+
+## Repo structure
+
+        |---[raw_data.csv]("data/raw_data.csv")
+---data-|
