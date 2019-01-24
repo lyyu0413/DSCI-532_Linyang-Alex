@@ -5,8 +5,8 @@ account: linyang-yu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 652966
-bundleId: 1824092
+bundleId: 1834938
 url: https://linyang-yu.shinyapps.io/MHealth-Visualization/
-when: 1547912405.47891
+when: 1548359475.34934
 asMultiple: FALSE
 asStatic: FALSE
