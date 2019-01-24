@@ -6,6 +6,12 @@ library(rsconnect)
 
 suppressPackageStartupMessages(library(ggplot2))
 library(plotly)
+library(leaflet)
+library(geojsonio)
+
+# states_plot <- geojson_read("tempgeo.json", what = "sp")
+
+# m <- states %>% select(region) %>% unique()
 
 
 mental_data <- read.csv("./data/cleaned_data.csv", stringsAsFactors = FALSE)
@@ -32,27 +38,28 @@ ui <- fluidPage(
                   min = 10, max = 60, value = c(18, 40)),
       radioButtons("genderInput", "Gender", choices = c("Male" ='M',
                                                               "Female" = 'F',
-                                                              "All condition included" = "All condition included"),
-                   selected = "All condition included"),
+                                                              "All" = "All"),
+                   selected = "All"),
       sliderInput("freedomInput", "Working Flexibility", min = 0, max = 5, value = c(0, 5)),
       #sliderInput("freedomInput", "How much freedom do you feel you have to manage a mental illness in your workplace?",min=-5,max=5,value=c(-5,5)),
       #### NOTE: How can we include an 'All' setting when we don't have it in our column for radioButtons?
       radioButtons("famInput", "Family History", choices = c("Respondents with family history of mental illness" ='Yes',
                                                                                     "Respondents without family history of mental illness" = 'No', 
-                                                                                    "All condition included" = "All condition included"),
-                   selected = "All condition included"),
+                                                                                    "All Respondents" = "All Respondents"),
+                   selected = "All Respondents"),
       
       
       radioButtons("treatmentInput", "Treatment for Mental Health", choices = c("Respondents have received mental health treatment" = 'Yes',
                                                                                                    "Respondents have never received mental health treatment" = 'No',
-                                                                                                   "All condition included" = 'All condition included'),
-                   selected = "All condition included")
+                                                                                                   "All Respondents" = 'All Respondents'),
+                   selected = "All Respondents")
      
     ),
     mainPanel(
       plotOutput("demo_map"),
       plotOutput("demo_hist"),
-      dataTableOutput("demo_table")
+      # dataTableOutput("demo_table")
+      leafletOutput("mymap",height = 1000)
       # dataTableOutput("table")
       #tabsetPanel(type = "tabs",
                   #tabPanel("Histogram_Age", plotOutput("age_hist"))
@@ -79,7 +86,7 @@ server <- function(input, output) {
     
   mh_filter_gender <- reactive({
     
-    if(input$genderInput == 'All condition included'){
+    if(input$genderInput == 'All'){
       mental_select <- mh_filtered_age_workf()
     }else{
       mental_select <- mh_filtered_age_workf() %>%
@@ -90,7 +97,7 @@ server <- function(input, output) {
   
   mh_filter_family <- reactive({
     
-    if(input$famInput == 'All condition included'){
+    if(input$famInput == 'All Respondents'){
       mental_select <- mh_filter_gender()
     }else{
       mental_select <- mh_filter_gender() %>%
@@ -101,7 +108,7 @@ server <- function(input, output) {
   
   
   mh_filtered <- reactive({
-    if(input$treatmentInput == 'All condition included'){
+    if(input$treatmentInput == 'All Respondents'){
       mental_select <- mh_filter_family()
     }else{
       mental_select <- mh_filter_family() %>%
@@ -130,7 +137,7 @@ server <- function(input, output) {
       geom_text(data = data.state,aes(x, y, label = abb), color = 'white')+
       coord_fixed() +
       scale_fill_gradientn(colours=c('cornflowerblue','hotpink'),na.value = "transparent",
-                           breaks=c(0.075,0.925),labels=c("Negative","Positive"),
+                           breaks=c(0.075,0.925),labels=c("No","Yes"),
                            limits=c(0,1)) +
       labs(title="Positive & Negative Responses by U.S. States") + 
       theme(axis.line = element_blank(),
@@ -166,19 +173,27 @@ server <- function(input, output) {
       mutate(Responses = ifelse(question == 1, 'Yes',
                                 ifelse(question == '0.5', 'Maybe', 'No')))
     
+    
     # did the factor relevel
     mh_final$Responses <- as.factor(mh_final$Responses)
     mh_final$Responses <- relevel(mh_final$Responses,"Yes")
+    
+    
+    cbPalette <- c("#009E73", "#F0E442", "#0072B2")
+    
     ggplot(mh_final, aes(Country, norm_count, fill = Responses)) +
       geom_bar(stat = 'identity', position = 'dodge') +
       geom_text(aes(y = norm_count + .9,    # nudge above top of bar
                     label = paste0(norm_count, '%')),    # prettify
                 position = position_dodge(width = 0.8), 
                 size = 4)+
+      scale_fill_manual(values=cbPalette)+
       labs(title = "Individual Responses by Country",
            y = "Proportion of different responses") +
       theme_bw()+
       theme(axis.title.x = element_blank(),
+            axis.line = element_blank(),
+            panel.background = element_rect(fill = "white"),
             plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
             axis.text.x = element_text(size = 14),
             axis.title.y = element_text(size = 14),
@@ -190,8 +205,10 @@ server <- function(input, output) {
   })
   
   
+  
+  
 }
-    
+  
     
 
 # output$pie_plot <- renderPlot(
