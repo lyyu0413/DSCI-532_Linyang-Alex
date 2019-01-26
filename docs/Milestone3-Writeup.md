@@ -17,7 +17,7 @@ a) Without any hesitation we can see it definitely helped us refine aspects of t
 
 3. Reflection on Changes from Milestone 2 
 
-a) There wasn't anything too time consuming, and we decided to implement an interactrive map that was considerably more complex, but we were able to build it. Our objective did change in that we weren't sure how our initial goal of offering value through our app to business leaders was going to playout, and decided to offer it more from a policy and research perspective on mental health dynamics. I think reflecting on this helped us find a better niche for this app.
+a) There wasn't anything too time consuming, and we decided to implement an interactrive map that was considerably more complex, but we were able to build it. Our objective did change in that we weren't sure how our initial goal of offering value through our app to business leaders was going to playout, and decided to offer it more from a policy and research perspective on mental health dynamics. Using the state, and country comparisons related to our questions of interest. You can learn alot about how demographics and cultural factors relate to mental health and this information could be quite useful to a researcher interested in some of these differences, or someone focused on policy-making around mental health. I think reflecting on this helped us find a better niche for this app, and the design depicts this clarity.
 
 b) The better design choice was adding greater value to our map by making it interactive where an average response is shown is the user hovers over the state with their mouse. It just fits with the theme of our app more nicely and really makes it sharper in it's presentation.
 
