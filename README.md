@@ -8,15 +8,17 @@ Updated Shiny app link: [MHealth-Visualization](https://linyang-yu.shinyapps.io/
 
 Renewed Shiny codes with comments: [app.R](MHealth-Visualization/app.R)
 
-Peer review given by Alex Hope:
-
-
 Peer review given by Linyang Yu:
 
 [DSCI_532_Mental-health-survey-Tech](https://github.com/UBC-MDS/DSCI_532_Mental-health-survey-Tech/issues/15)
 
 [DSCI-532_Alex-Jesica_Bechdel-Test](https://github.com/UBC-MDS/DSCI-532_Alex-Jesica_Bechdel-Test/issues/15)
 
+Peer review given by Alex Hope:
+
+[DSCI_532_Arzan_Brenden](https://github.com/UBC-MDS/DSCI_532_Arzan_Brenden/issues/12)
+
+[DSCI532_Youtube-Trending](https://github.com/UBC-MDS/DSCI532_Youtube-Trending/issues/22)
 
 Write up file for milestone 3: [WriteUp](docs/Milestone3-Writeup.md)
 
