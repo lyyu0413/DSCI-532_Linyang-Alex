@@ -8,9 +8,6 @@ Updated Shiny app link: [MHealth-Visualization](https://linyang-yu.shinyapps.io/
 
 Renewed Shiny codes with comments: [app.R](MHealth-Visualization/app.R)
 
-Peer review given by Alex Hope:
-
-
 Peer review given by Linyang Yu:
 
 [DSCI_532_Mental-health-survey-Tech](https://github.com/UBC-MDS/DSCI_532_Mental-health-survey-Tech/issues/15)
