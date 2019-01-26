@@ -1,5 +1,27 @@
 # DSCI-532_Linyang-Alex
 
+## Milestone 3 submission
+
+Added code of Conduct: [Conduct](CONDUCT.md)
+
+Updated Shiny app link: [MHealth-Visualization](https://linyang-yu.shinyapps.io/MHealth-Visualization/)
+
+Renewed Shiny codes with comments: [app.R](MHealth-Visualization/app.R)
+
+Peer review given by Alex Hope:
+
+
+Peer review given by Linyang Yu:
+
+[DSCI_532_Mental-health-survey-Tech](https://github.com/UBC-MDS/DSCI_532_Mental-health-survey-Tech/issues/15)
+
+[DSCI-532_Alex-Jesica_Bechdel-Test](https://github.com/UBC-MDS/DSCI-532_Alex-Jesica_Bechdel-Test/issues/15)
+
+
+Write up file for milestone 3: [WriteUp](docs/Milestone3-Writeup.md)
+
+
+
 ## Milestome 2 submission based on requirement on Github:
 
 [Milestone2 writeup](docs/Milestone2-Writeup.md)
