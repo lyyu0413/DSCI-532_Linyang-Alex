@@ -17,6 +17,7 @@ Peer review given by Linyang Yu:
 Peer review given by Alex Hope:
 
 [DSCI_532_Arzan_Brenden](https://github.com/UBC-MDS/DSCI_532_Arzan_Brenden/issues/12)
+
 [DSCI532_Youtube-Trending](https://github.com/UBC-MDS/DSCI532_Youtube-Trending/issues/22)
 
 Write up file for milestone 3: [WriteUp](docs/Milestone3-Writeup.md)
