@@ -4,7 +4,7 @@
 
 Updated shiny app link: [MHealth-Visualization](https://linyang-yu.shinyapps.io/MHealth-Visualization/)
 
-Write up file for milestone 4: [Writeup](docs/'Milestone 4 Write-Up.md')
+Write up file for milestone 4: [Writeup]('docs/Milestone 4 Write-Up.md')
 
 
 ## Milestone 3 submission
