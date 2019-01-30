@@ -40,10 +40,6 @@ ui <- fluidPage(
                                                               "Female" = 'F',
                                                               "All" = "All"),
                    selected = "All"),
-      # Workflexibility
-      sliderInput("freedomInput", "Working Flexibility", min = 0, max = 5, value = c(0, 5)),
-      #sliderInput("freedomInput", "How much freedom do you feel you have to manage a mental illness in your workplace?",min=-5,max=5,value=c(-5,5)),
-
 
       # Family history
       radioButtons("famInput", "Family History", choices = c("Respondents with family history of mental illness" ='Yes',
@@ -56,7 +52,11 @@ ui <- fluidPage(
                                                                                                    "Respondents have never received mental health treatment" = 'No',
                                                                                                    "All Respondents" = 'All Respondents'),
                    selected = "All Respondents"),
-
+      
+      # Workflexibility
+      sliderInput("freedomInput", "Working Flexibility", min = 0, max = 5, value = c(0, 5)),
+      #sliderInput("freedomInput", "How much freedom do you feel you have to manage a mental illness in your workplace?",min=-5,max=5,value=c(-5,5)),
+      
       # Added explaination for work flexibility
       p("*Working Flexibility is a self-defined variable, which takes in to consideration of five separate variables in the original survey: self_employed, wellness_program, benefits, remote_work, leave",style = "font-family: 'times'; font-si16pt")
 
