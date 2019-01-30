@@ -22,7 +22,7 @@ mental_data <- read.csv("./data/cleaned_data.csv", stringsAsFactors = FALSE)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  titlePanel("Mental Health Conditions  Tech Companies"),
+  titlePanel("Mental Health Conditions in Tech Companies"),
   sidebarLayout(
     sidebarPanel(
     # Question input define
